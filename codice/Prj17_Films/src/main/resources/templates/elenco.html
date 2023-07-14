@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>Films</h1>
+	<table>
+  <tr>
+    <th>Titolo</th>
+    <th>Rating</th>
+  </tr>
+  <tr th:each="f: ${elencoFilm}">
+    <td><a  th:text="${f.titolo}" th:href="@{'https://www.google.com/search?tbm=vid&q=' + ${f.titolo}}" ></a></td>
+    <td th:text="${f.rating}">Row 1: Col 2</td>
+  </tr>
+</table>
+
+	
+	
+	
+	
+	
+	
+	
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+    <h1>Add serie</h1>
+    <form method="post" action="serie">
+
+        <input type="text" name="titolo" id="titolo">
+        <input type="text" name="locandina" id="locandina">
+        <input type="text" name="rating" id="rating">
+        <input type="submit" value="aggiungi">
+
+    </form>
+
+    <script>
+
+        const URL= "https://api.tvmaze.com/singlesearch/shows?q=";
+        const TITLE = document.getElementById("titolo");
+        const LOCANDINA = document.getElementById("locandina");
+        const RATING = document.getElementById("rating");
+
+        TITLE.addEventListener("blur", function(){
+
+            let scelta = TITLE.value;
+            fetch(URL + scelta)
+                .then(response => response.json() )
+                .then(serie => {
+
+                    LOCANDINA.value = serie.image.medium;
+                    RATING.value = serie.rating.average;
+
+                })
+
+        })
+
+    </script>
+
+</body>
+</html>
